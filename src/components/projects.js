@@ -9,6 +9,14 @@ class Projects extends Component {
         super (props);
         this.state = { activaTab: 0};
     }
+
+    states = {
+        projectdb: [],
+        product: {
+          name: 'sample product',
+          
+        }
+      }
     
     toggleCategories(){
         if(this.state.activaTab === 0){
