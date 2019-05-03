@@ -128,6 +128,7 @@ class Resume extends Component {
     }
 
     render() {
+        console.log(this.state)
         return (
             <div className="category-tabs">
                 <Tabs activeTab={this.state.activaTab} onChange={(tabId) => this.setState({ activaTab: tabId})} ripple>

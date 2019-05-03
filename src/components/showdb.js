@@ -9,26 +9,35 @@ class ShowDB extends Component {
 
   constructor(props) {
     super (props);
-    this.state = { activaTab: 0};
+    
   }
 
   state = {
-    products: [],
-    product: {
-      name: 'sample product',
-      
-    }
-  }
+    activaTab: 0,
+     
+    /*projectdd: List([       //List는 배열을 의미
+    ]),
+    gamedb: List([
+
+    ]),
+    */
+
+    projectdd: [],
+    gamedb: [],
+    picturedb: [],
+    noveldb: [],
+
+
+     
+   }
 
   toggleCategories(){
-
-    const { products } = this.state;
 
     if(this.state.activaTab === 0){
         return(
           <div className="App">
             <p>Web</p>
-            <pre>{JSON.stringify(products, null,'\t')}</pre>
+            <pre>{JSON.stringify(this.state.projectdd, null,'\t')}</pre>
             
           </div>
         )
@@ -36,21 +45,24 @@ class ShowDB extends Component {
     else if(this.state.activaTab === 1) {
       return (
           <div>
-            <TestDB />
+            <p>Projects</p>
+            <pre>{JSON.stringify(this.state.projectdd, null,'\t')}</pre>
           </div>
       )
     }
     else if(this.state.activaTab === 2) {
       return (
           <div>
-            <TestDD />
+            <p>Pictures</p>
+            <pre>{JSON.stringify(this.state.picturedb, null,'\t')}</pre>
           </div>
       )
     }
     else if(this.state.activaTab === 3) {
       return (
           <div>
-            <TestDB />
+            <p>novels</p>
+            <pre>{JSON.stringify(this.state.noveldb, null,'\t')}</pre>>
           </div>
       )
     }
@@ -59,9 +71,7 @@ class ShowDB extends Component {
 
   
 
-  componentDidMount() {
-    this.getProducts();
-  }
+  
 
   getProducts = _ => {   //products 정보를 state에 입력
     fetch('http://localhost:4000/products')
@@ -69,6 +79,40 @@ class ShowDB extends Component {
     .then(response => this.setState({ products: response.data }))
     .catch(err => console.error(err))
   }
+
+  componentDidMount() {
+    this.getProjectdd();
+    this.getGameDB();
+    this.getpictureDB();
+    this.getnovelDB();
+    
+}
+    
+     getProjectdd = _ => {   //products 정보를 state에 입력
+      fetch('http://localhost:4000/projectdd')
+       .then(response => response.json())
+       .then(response => this.setState({ projectdd: response.data }))
+       .catch(err => console.error(err))   
+        
+    }
+     getGameDB = _ => {
+        fetch('http://localhost:4000/gamedb')
+        .then(response => response.json())
+        .then(response => this.setState({ gamedb: response.data }))
+        .catch(err => console.error(err))  
+     }
+     getpictureDB = _ => {
+        fetch('http://localhost:4000/picturedb')
+        .then(response => response.json())
+        .then(response => this.setState({ picturedb: response.data }))
+        .catch(err => console.error(err))  
+     }
+     getnovelDB = _ => {
+        fetch('http://localhost:4000/noveldb')
+        .then(response => response.json())
+        .then(response => this.setState({ noveldb: response.data }))
+        .catch(err => console.error(err))  
+     }
   
   addProduct = _ => {
     const { product } = this.state;

@@ -83,6 +83,45 @@ app.get('/projectdd', (req, res) => {
     });
 });
 
+app.get('/gamedb', (req, res) => {
+    connection.query(`select * from gamedb`, (err, results) => {
+        if(err) {
+            return res.send(err)
+        }
+        else {
+            return res.json({
+                data: results
+            })
+        }
+    });
+});
+
+app.get('/picturedb', (req, res) => {
+    connection.query(`select * from picturedb`, (err, results) => {
+        if(err) {
+            return res.send(err)
+        }
+        else {
+            return res.json({
+                data: results
+            })
+        }
+    });
+});
+
+app.get('/noveldb', (req, res) => {
+    connection.query(`select * from noveldb`, (err, results) => {
+        if(err) {
+            return res.send(err)
+        }
+        else {
+            return res.json({
+                data: results
+            })
+        }
+    });
+});
+
 
 app.listen(4000, () => {
     console.log(`products server listening on port 4000`);
