@@ -5,6 +5,9 @@ import { Tabs, Tab, Card, CardTitle, CardText, CardActions, Button, CardMenu, Ic
 import TestDB from './DB/testdb';
 import TestDD from './DB/testdd';
 
+import RemoveDB from './removeDB';
+import AddDB from './addDB';
+
 class ShowDB extends Component {
 
   constructor(props) {
@@ -22,7 +25,7 @@ class ShowDB extends Component {
     ]),
     */
 
-    projectdd: [],
+    projectdb: [],
     gamedb: [],
     picturedb: [],
     noveldb: [],
@@ -37,7 +40,7 @@ class ShowDB extends Component {
         return(
           <div className="App">
             <p>Web</p>
-            <pre>{JSON.stringify(this.state.projectdd, null,'\t')}</pre>
+            <pre>{JSON.stringify(this.state.projectdb, null,'\t')}</pre>
             
           </div>
         )
@@ -46,7 +49,7 @@ class ShowDB extends Component {
       return (
           <div>
             <p>Projects</p>
-            <pre>{JSON.stringify(this.state.projectdd, null,'\t')}</pre>
+            <pre>{JSON.stringify(this.state.gamedb, null,'\t')}</pre>
           </div>
       )
     }
@@ -62,7 +65,23 @@ class ShowDB extends Component {
       return (
           <div>
             <p>novels</p>
-            <pre>{JSON.stringify(this.state.noveldb, null,'\t')}</pre>>
+            <pre>{JSON.stringify(this.state.noveldb, null,'\t')}</pre>
+          </div>
+      )
+    }
+    else if(this.state.activaTab === 4) {
+      return (
+          <div>
+            <p>AddDB</p>
+            <AddDB />
+          </div>
+      )
+    }
+    else if(this.state.activaTab === 5) {
+      return (
+          <div>
+            <p>RemoveDB</p>
+            <RemoveDB />
           </div>
       )
     }
@@ -81,21 +100,21 @@ class ShowDB extends Component {
   }
 
   componentDidMount() {
-    this.getProjectdd();
-    this.getGameDB();
+    this.getprojectdb();
+    this.getgameDB();
     this.getpictureDB();
     this.getnovelDB();
     
 }
     
-     getProjectdd = _ => {   //products 정보를 state에 입력
-      fetch('http://localhost:4000/projectdd')
+     getprojectdb = _ => {   //products 정보를 state에 입력
+      fetch('http://localhost:4000/projectdb')
        .then(response => response.json())
-       .then(response => this.setState({ projectdd: response.data }))
+       .then(response => this.setState({ projectdb: response.data }))
        .catch(err => console.error(err))   
         
     }
-     getGameDB = _ => {
+     getgameDB = _ => {
         fetch('http://localhost:4000/gamedb')
         .then(response => response.json())
         .then(response => this.setState({ gamedb: response.data }))
@@ -143,6 +162,8 @@ class ShowDB extends Component {
             <Tab>Projects</Tab>
             <Tab>Picture</Tab>
             <Tab>Nobel</Tab>
+            <Tab>AddDB</Tab>
+            <Tab>RemoveDB</Tab>
         </Tabs>
 
         

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Layout, Header, Navigation, Drawer, Content } from 'react-mdl';
+import { Layout, Header, Navigation, Drawer, Content,  } from 'react-mdl';
 import Main from './components/main';
 import { Link } from 'react-router-dom';
 import './App.css';
@@ -13,6 +13,7 @@ class App extends Component {
           <Layout>
               <Header className="header-color" title={<Link style={{textDecoration: 'none', color: 'white'}} to="/">MyPortfolio</Link>} scroll>
                   <Navigation>
+                  
                       <Link to="/resume">Web</Link>
                       <Link to="/aboutme">AboutMe</Link>
                       <Link to="/projects">Projects</Link>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Cell } from 'react-mdl';
-import { Tabs, Tab, Card, CardTitle, CardText, CardActions, Button, CardMenu, IconButton } from 'react-mdl';
+import { Tabs, Tab, Card, CardTitle, CardText, CardActions, Button, CardMenu, IconButton, Textfield } from 'react-mdl';
 import { Map, List, Record } from 'immutable';
 
 
@@ -23,7 +23,7 @@ class Projects extends Component {
        ]),
        */
 
-       projectdd: [],
+       projectdb: [],
        gamedb: [],
        picturedb: [],
        noveldb: [],
@@ -33,17 +33,17 @@ class Projects extends Component {
       }
 
     componentDidMount() {
-        this.getProjectdd();
+        this.getProjectdb();
         this.getGameDB();
         this.getpictureDB();
         this.getnovelDB();
         
     }
         
-         getProjectdd = _ => {   //products 정보를 state에 입력
-          fetch('http://localhost:4000/projectdd')
+         getProjectdb = _ => {   //products 정보를 state에 입력
+          fetch('http://localhost:4000/projectdb')
            .then(response => response.json())
-           .then(response => this.setState({ projectdd: response.data }))
+           .then(response => this.setState({ projectdb: response.data }))
            .catch(err => console.error(err))   
             
         }
@@ -184,11 +184,18 @@ class Projects extends Component {
         return (
             
                 <div className="category-tabs">
+                
                 <Tabs activeTab={ this.state.activeTab } onChange={(tabId) => this.setState({ activeTab: tabId })} ripple>
                     <Tab>App</Tab>                                                    
                     <Tab>Game</Tab>
                     <Tab>Picture</Tab>
                     <Tab>Nobel</Tab>
+                    <Textfield 
+                            label="Search Address, city, zip"
+                            expandable
+                            expandableIcon="search"
+                            floatingLabel
+                    />
                 </Tabs>
 
                 
