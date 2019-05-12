@@ -14,7 +14,7 @@ class AddDB extends Component {
           cardtext: '',
           github:'',
           livedemo:'',
-          radiocount: '1',
+          radiocount: '1', 
         }
 
         addappDB = _ => {

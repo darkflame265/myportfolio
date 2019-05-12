@@ -8,12 +8,16 @@ const app = express();
 const SELECT_ALL_PRODUCTS_QUERY = 'SELECT * FROM products';
 const SELECT_ALL_PROJECTDB_QUERY = 'SELECT * FROM projectdb';
 
+
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'dark0000',
-    database: 'react_sql'
+    host: 'database-1.c8mhpo4sz1qt.ap-northeast-2.rds.amazonaws.com',
+    user: 'admin',
+    password: 'DrjJzcFnAFJa12uATJ6e',
+    database: 'ExampleDB',
+    port: '3306'
 });
+
+
 
 connection.connect(err => {
     if(err) {
@@ -25,8 +29,23 @@ connection.connect(err => {
 
 app.use(cors());
 
-app.get('/', (req, res) => {
-    res.send('go to /products to see products');
+app.get('/', (req, res, rows) => {
+    res.send('go to /products to see product');
+    
+    console.log("it's god")
+})
+
+app.get('/api', (req, res) => {
+    connection.query(
+      "SELECT * FROM noveldb",
+      (err, rows, fields) => {
+          res.send(rows);
+      }  
+    );
+});
+
+app.get('/nam', (req, res) => {
+    res.send('go to ffffffffffff');
 })
 
 app.get('/projectdb/add', (req, res) => {
@@ -150,12 +169,7 @@ app.get('/noveldb', (req, res) => {
     });
 });
 
-
-
-
-app.listen(4000, () => {
-    console.log(`products server listening on port 4000`);
-})
+app.listen(4000,)
 
 
 

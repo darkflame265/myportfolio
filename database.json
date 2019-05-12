@@ -1,0 +1,7 @@
+{
+    "host": "database-1.c8mhpo4sz1qt.ap-northeast-2.rds.amazonaws.com",
+    "user": "admin",
+    "password": "DrjJzcFnAFJa12uATJ6e",
+    "port": "3306",
+    "database": "ExampleDB"
+}

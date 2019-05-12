@@ -1,37 +1,18 @@
 import React, { Component } from 'react';
 import { Grid, Cell } from 'react-mdl';
-import { Tabs, Tab, Card, CardTitle, CardText, CardActions, Button, CardMenu, IconButton } from 'react-mdl';
-
-import TestDB from './DB/testdb';
-import TestDD from './DB/testdd';
+import { Tabs, Tab } from 'react-mdl';
 
 import RemoveDB from './removeDB';
 import AddDB from './addDB';
 
 class ShowDB extends Component {
 
-  constructor(props) {
-    super (props);
-    
-  }
-
   state = {
     activaTab: 0,
-     
-    /*projectdd: List([       //List는 배열을 의미
-    ]),
-    gamedb: List([
-
-    ]),
-    */
-
     projectdb: [],
     gamedb: [],
     picturedb: [],
     noveldb: [],
-
-
-     
    }
 
   toggleCategories(){
@@ -89,16 +70,6 @@ class ShowDB extends Component {
   }
 
   
-
-  
-
-  getProducts = _ => {   //products 정보를 state에 입력
-    fetch('http://localhost:4000/products')
-    .then(response => response.json())
-    .then(response => this.setState({ products: response.data }))
-    .catch(err => console.error(err))
-  }
-
   componentDidMount() {
     this.getprojectdb();
     this.getgameDB();
@@ -147,15 +118,9 @@ class ShowDB extends Component {
   </div>
 
   render() {
-    const { products, price} = this.state;
+    
     
     return (
-      /*
-      <div className="App">
-      <pre>{JSON.stringify(products, null,'\t')}</pre>
-      <TestDB />
-      </div>
-      */
         <div className="category-tabs">
         <Tabs activeTab={this.state.activaTab} onChange={(tabId) => this.setState({ activaTab: tabId})} ripple>
             <Tab>Web</Tab>
@@ -172,10 +137,7 @@ class ShowDB extends Component {
                     <div className="content">{this.toggleCategories()}</div>
                 </Cell>
             </Grid>
-       
       </div>
-        
-        
       );
     
 }

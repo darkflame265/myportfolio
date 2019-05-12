@@ -72,7 +72,7 @@ class Projects extends Component {
             return(
                 <div className="projects-grid">
                 
-                {this.state.projectdd.map(item => (
+                {this.state.projectdb.map(item => (
                 <Card key= {item.cardtitle} shadow={5} style={{minWidth: '300px', margin: 'auto'}}>
                     <CardTitle style={{color: 'black', height: '300px',
                      background: `${item.background}`
